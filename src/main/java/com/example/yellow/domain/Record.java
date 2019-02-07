@@ -1,32 +1,43 @@
 package com.example.yellow.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Record {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Please fill the message")
     private int distance;
 
-    private double speed;
+    @NotBlank(message = "Please fill the message")
+    private double time;
 
-    private Date date;
+    @NotBlank(message = "Please fill the message")
+    private String date;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User author;
 
-    public Record(){
+    private String filename;
+
+    public Record() {
     }
 
-    public Record(int distance, double speed, Date date, User user) {
+    public Record(int distance, double time, String date, User user) {
         this.distance = distance;
-        this.speed = speed;
+        this.time = time;
         this.date = date;
-        this.user = user;
+        this.author = user;
+    }
+
+    public String getAuthorName(){
+        return author.getUsername();
     }
 
     public Long getId() {
@@ -45,27 +56,35 @@ public class Record {
         this.distance = distance;
     }
 
-    public double getSpeed() {
-        return speed;
+    public double getTime() {
+        return time;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    public void setTime(double time) {
+        this.time = time;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthor(User user) {
+        this.author = user;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
