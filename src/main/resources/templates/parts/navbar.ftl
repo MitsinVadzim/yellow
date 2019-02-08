@@ -12,10 +12,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/main">Records</a>
+            </li>
             <#if user??>
-                <li class="nav-item">
-                    <a class="nav-link" href="/main">Records</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user-records/${currentUserId}">My records</a>
                 </li>

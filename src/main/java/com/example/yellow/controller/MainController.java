@@ -53,15 +53,15 @@ public class MainController {
             Model model,
             @RequestParam("file") MultipartFile file) throws IOException {
         record.setAuthor(user);
-
+//        if(record.getDistance() != null && !user.getPassword().equals(passwordConfirm)){
+//            model.addAttribute("passwordError", "Password are different!");
+//        }
         if(bindingResult.hasErrors()){
             Map<String, String> collect = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(collect);
-            model.addAttribute("tempRecord", record);
         }else {
             saveFile(record, file);
             recordRepository.save(record);
-            model.addAttribute("tempRecord", null);
         }
         Iterable<Record> records = recordRepository.findAll();
         model.addAttribute("records", records);
@@ -84,14 +84,13 @@ public class MainController {
     @GetMapping("/user-records/{user}")
     public String userRecords(
             @AuthenticationPrincipal User currentUser,
-            @PathVariable("user") Long id,
+            @PathVariable User user,
             Model model,
             @RequestParam(required = false) Record record
     ){
-        User user = userRepository.findById(id);
         Set<Record> records = user.getRecords();
         model.addAttribute("records", records);
-        model.addAttribute("record", record);
+        model.addAttribute("tempRecord", record);
         model.addAttribute("isCurrentUser", currentUser.equals(user));
         return "userRecords";
     }
@@ -101,8 +100,8 @@ public class MainController {
             @AuthenticationPrincipal User currentUser,
             @PathVariable Long user,
             @RequestParam("id") Record record,
-            @RequestParam("distance") int distance,
-            @RequestParam("time") double time,
+            @RequestParam("distance") Integer distance,
+            @RequestParam("time") Double time,
             @RequestParam("date") String date,
             @RequestParam("file") MultipartFile file
     ) throws IOException {

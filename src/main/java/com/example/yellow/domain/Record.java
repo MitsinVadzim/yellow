@@ -1,9 +1,9 @@
 package com.example.yellow.domain;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Record {
@@ -11,13 +11,16 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Please fill the message")
-    private int distance;
+    @NotNull(message = "Please enter distance")
+    //@Pattern(regexp="[\\d]{6}", message = "It's not number")
+    @Digits(integer = 10, fraction = 0, message = "The distance must be no more than 100 characters")
+    private Integer distance;
 
-    @NotBlank(message = "Please fill the message")
-    private double time;
+    @NotNull(message = "Please enter race time")
+    //@Pattern(regexp="[\\d]{6}", message = "It's not number")
+    private Double time;
 
-    @NotBlank(message = "Please fill the message")
+    @NotBlank(message = "Please enter race date")
     private String date;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -36,7 +39,7 @@ public class Record {
         this.author = user;
     }
 
-    public String getAuthorName(){
+    public String getAuthorName() {
         return author.getUsername();
     }
 
@@ -48,19 +51,19 @@ public class Record {
         this.id = id;
     }
 
-    public int getDistance() {
+    public Integer getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(Integer distance) {
         this.distance = distance;
     }
 
-    public double getTime() {
+    public Double getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(Double time) {
         this.time = time;
     }
 

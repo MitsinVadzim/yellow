@@ -3,9 +3,9 @@
 </a>
 <div class="collapse <#if record??>show</#if>" id="collapseExample">
     <div class="form-group mt-3">
-        <form method="post" action="main" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <input type="text" name="distance" placeholder="Введите дистанцию" class="form-control ${(distanceError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.distance}</#if>">
+                <input type="text" name="distance" placeholder="Enter distance" class="form-control ${(distanceError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.distance}</#if>">
                 <#if distanceError??>
                     <div class="invalid-feedback">
                         ${distanceError}
@@ -13,7 +13,7 @@
                 </#if>
             </div>
             <div class="form-group">
-                <input type="text" name="time" placeholder="Введите время забега" class="form-control ${(timeError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.time}</#if>">
+                <input type="text" name="time" placeholder="Enter race time" class="form-control ${(timeError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.time}</#if>">
                 <#if timeError??>
                     <div class="invalid-feedback">
                         ${timeError}
@@ -21,7 +21,7 @@
                 </#if>
             </div>
             <div class="form-group">
-                <input type="text" name="date" placeholder="Введите дату забега" class="form-control ${(dateError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.date}</#if>">
+                <input type="text" name="date" placeholder="Enter date time" class="form-control ${(dateError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.date}</#if>">
                 <#if dateError??>
                     <div class="invalid-feedback">
                         ${dateError}
@@ -37,7 +37,7 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <input type="hidden" name="id" value="<#if tempRecord??>${tempRecord.id}</#if>">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </form>
     </div>
