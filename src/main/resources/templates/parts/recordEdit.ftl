@@ -13,7 +13,7 @@
                 </#if>
             </div>
             <div class="form-group">
-                <input type="text" name="time" placeholder="Enter race time" class="form-control ${(timeError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.time}</#if>">
+                <input type="text" name="time" placeholder="Enter running time" class="form-control ${(timeError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.time}</#if>">
                 <#if timeError??>
                     <div class="invalid-feedback">
                         ${timeError}
@@ -21,7 +21,7 @@
                 </#if>
             </div>
             <div class="form-group">
-                <input type="text" name="date" placeholder="Enter date time" class="form-control ${(dateError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.date}</#if>">
+                <input type="text" name="date" placeholder="YYYY-MM-DD" class="form-control ${(dateError??)?string('is-invalid', '')}" value="<#if tempRecord??>${tempRecord.date}</#if>">
                 <#if dateError??>
                     <div class="invalid-feedback">
                         ${dateError}

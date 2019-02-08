@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/user-records/${currentUserId}">My records</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reports/${currentUserId}">Reports</a>
+                </li>
             </#if>
             <#if isAdmin>
                 <li class="nav-item">

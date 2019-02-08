@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,8 +37,8 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Record> records;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Record> records;
 
     public boolean isAdmin() {
         return roles.contains(Role.ADMIN);
@@ -124,11 +125,11 @@ public class User implements UserDetails {
         this.activationCode = activationCode;
     }
 
-    public Set<Record> getRecords() {
+    public List<Record> getRecords() {
         return records;
     }
 
-    public void setRecords(Set<Record> records) {
+    public void setRecords(List<Record> records) {
         this.records = records;
     }
 

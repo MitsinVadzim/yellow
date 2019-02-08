@@ -88,7 +88,7 @@ public class MainController {
             Model model,
             @RequestParam(required = false) Record record
     ){
-        Set<Record> records = user.getRecords();
+        List<Record> records = user.getRecords();
         model.addAttribute("records", records);
         model.addAttribute("tempRecord", record);
         model.addAttribute("isCurrentUser", currentUser.equals(user));

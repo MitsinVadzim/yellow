@@ -7,9 +7,9 @@
                 <img src="/img/${record.filename}" class="card-img-top">
             </#if>
             <div class="m-2">
-                <span>${record.distance}</span><br>
-                <i>${record.time}</i><br>
-                <i>${record.date}</i>
+                <span>Distance:${record.distance}</span><br>
+                <i>Running time:${record.time}</i><br>
+                <i>Date time:${record.date}</i>
             </div>
             <div class="card-footer text-muted">
                 <a href="/user-records/${record.author.id}">${record.authorName}</a>
