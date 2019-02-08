@@ -54,6 +54,9 @@ public class ReportService {
     }
 
     private Report startInit(Record record) {
+        if(record == null){
+            return null;
+        }
         Report report = new Report(record.getDate(), record.getTime(), record.getDistance());
         report.setLastDayOfTheWeek(getLastDayOfTheWeek(report));
         report.setAvSpeed((double)report.getTotalDistance()/report.getAvTime());

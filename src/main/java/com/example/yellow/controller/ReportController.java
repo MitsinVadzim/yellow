@@ -5,7 +5,6 @@ import com.example.yellow.domain.User;
 import com.example.yellow.repository.UserRepository;
 import com.example.yellow.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
